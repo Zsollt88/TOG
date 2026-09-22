@@ -1,0 +1,30 @@
+# ---------- .NET ----------
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+*.userprefs
+.vs/
+TestResults/
+*.trx
+*.coverage
+*.nupkg
+
+# ---------- Node ----------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+npm-debug.log*
+yarn-error.log*
+
+# ---------- Editors / OS ----------
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+PLAN.md
