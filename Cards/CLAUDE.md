@@ -5,8 +5,12 @@ converter will emit `server/src/TownsOfGyul.CardData/Seed/cards.text.json` from 
 `TownsOfGyul.CardData` exists; a hand-authored `cards.effects.json` supplies the structured
 effects separately, keyed by card id.
 
-Two sets exist today, `8th/` and `Ice Tusk/` — rival sets, not factions; each spans all five
+Two towns exist today, `8th/` and `Ice Tusk/` — rival towns, not factions; each spans all five
 factions (Worker, Scientist, Religious, Leader, Merchant).
+
+**The folder name is the town's `TownId`** (`../CLAUDE.md` D5). Adding a town means adding a folder;
+renaming a folder renames the town, so don't do it casually. `Neutral/` is reserved for neutral cards
+(post-MVP).
 
 ## Format
 

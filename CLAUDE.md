@@ -27,6 +27,12 @@ than 20 KB.
 - **D3 — Unlimited copies of a card are legal**, in both the building zone and the deck.
 - **D4 — Split card source.** Markdown stays the authoring format for card *text*; a
   hand-authored JSON file holds the structured *effects*, keyed by card id. Merged at startup.
+- **D5 — Town-specific and neutral cards.** Each player picks one town; towns are not exclusive
+  (both players may pick the same one), and more towns will be added later. A town-specific card
+  can only go in the building zone and deck of its own town; a neutral card can go in any town's.
+  The MVP has only town-specific cards (`8th`, `Ice Tusk`). Neutral cards come later. Towns are
+  data, not an enum: `CardDefinition.TownId` is the card's `Cards/` folder name (`null` = neutral),
+  so a new town is a new folder with no Domain code change.
 
 ## Domain model decisions
 
@@ -50,11 +56,14 @@ than 20 KB.
   are face-down occupy slots and count toward level limits but grant no capacity or production.
 - **The effect model — three axes, not just "what happens."** `EffectDefinition` needs
   `Trigger` (OnPlay | OnActivate | OnScoring | Continuous), `Duration` (Instant | ThisRound |
-  NextOpponentRound | WhileInPlay), and `Target` (nullable — null means no player choice
-  required), on top of the action itself. Concrete cards force each axis: `Lava spinner`'s
+  NextOpponentRound | WhileInPlay), and `Target` (nullable — null means the effect touches no
+  card), on top of the action itself. Concrete cards force each axis: `Lava spinner`'s
   recurring `OnScoring` VP differs from `Trading burrow`'s instant `OnPlay` VP; `Delayed cargo`
-  suppresses production *next round* while `Chant of the Father` only buffs *this* round;
-  `Trading burrow` and `Chief Engineer` require player-chosen targets. Prefer giving actions a
+  suppresses production *next round* while `Chant of the Father` only buffs *this* round.
+  `TargetSpec` separates *what* is touched (`Owner`, `Filter`, `Count`) from *who decides*
+  (`Selection`: `Automatic` — engine resolves at resolution time, e.g. "all of your Hunters" —
+  or `PlayerChosen` — the payload carries the picks and the engine only validates them, e.g.
+  `Trading burrow`, `Chief Engineer`). See `PLAN.md` §3.3. Prefer giving actions a
   target/X payload over a suspended `PendingChoice` state machine — it keeps the engine a pure
   `(state, action) => state` function that SignalR doesn't have to serialize and resume across
   reconnects. A `CustomEffectId` registry is the escape hatch for cards that won't decompose into
@@ -104,8 +113,8 @@ restate formatting rules here; this section is for conventions `.editorconfig` c
 TOG/
 ├── CLAUDE.md                            # this file — always loaded
 ├── Cards/                                # card text authoring source — see Cards/CLAUDE.md
-│   ├── 8th/
-│   └── Ice Tusk/
+│   ├── 8th/                              # rival town (spans all 5 factions)
+│   └── Ice Tusk/                         # rival town (spans all 5 factions)
 ├── Rules.md                              # tabletop rules this implements
 ├── README.md                             # public project pitch/stack/roadmap
 ├── PLAN.md                               # gitignored phase-by-phase build roadmap (scratch)
