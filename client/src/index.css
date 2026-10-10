@@ -1,0 +1,61 @@
+:root {
+  --text: #4b4553;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --ok: #1f7a3a;
+  --error: #b42318;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 16px/1.5 var(--sans);
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #c4c7ce;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --ok: #4ade80;
+    --error: #f87171;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+h1 {
+  color: var(--text-h);
+  font-weight: 600;
+  margin: 0 0 24px;
+}
+
+code {
+  font-family: var(--mono);
+}
+
+.health {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.health--ok {
+  color: var(--ok);
+}
+
+.health--error {
+  color: var(--error);
+}

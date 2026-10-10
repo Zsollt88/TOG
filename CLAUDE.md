@@ -118,9 +118,9 @@ TOG/
 ├── Rules.md                              # tabletop rules this implements
 ├── README.md                             # public project pitch/stack/roadmap
 ├── PLAN.md                               # gitignored phase-by-phase build roadmap (scratch)
-├── client/                               # NOT YET SCAFFOLDED — Vite + React + TS
+├── client/                               # Vite + React + TS — see client/CLAUDE.md
 │   └── src/{api,components,hooks,state,types}/
-└── server/                               # NOT YET SCAFFOLDED
+└── server/                               # TownsOfGyul.sln; only Api exists so far
     ├── src/
     │   ├── TownsOfGyul.Domain/           # pure C# rules engine, zero web deps
     │   ├── TownsOfGyul.CardData/         # card catalog + JSON seed data
