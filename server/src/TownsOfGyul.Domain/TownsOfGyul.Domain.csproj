@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Pure rules engine: must never reference ASP.NET Core. -->
+  <PropertyGroup>
+    <RootNamespace>TownsOfGyul.Domain</RootNamespace>
+  </PropertyGroup>
+
+</Project>
