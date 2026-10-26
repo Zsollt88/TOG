@@ -28,3 +28,6 @@ Thumbs.db
 desktop.ini
 
 PLAN.md
+
+# Personal token-usage ledger (tools/token-usage)
+tools/token-usage/ledger.json

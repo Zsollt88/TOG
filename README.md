@@ -74,7 +74,7 @@ dotnet test
 
 ## Roadmap
 
-- [ ] **Phase 0** — tooling scaffolding, `GET /api/health` reachable from the client
+- [x] **Phase 0** — tooling scaffolding, `GET /api/health` reachable from the client
 - [ ] **Phase 1** — core domain model and rules engine (no UI, no web)
 - [ ] **Phase 2** — minimal Web API over the engine
 - [ ] **Phase 3** — React hot-seat UI *(first fully playable milestone)*
